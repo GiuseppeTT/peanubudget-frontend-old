@@ -1,4 +1,4 @@
-import DownloadAccountError from "./DownloadAccountError";
+import DownloadAccountError from "@/components/account/DownloadAccountError";
 import { useAccounts } from "@/lib/account";
 import { renderCurrencyCell } from "@/lib/renderCell";
 import Box from "@mui/material/Box";
