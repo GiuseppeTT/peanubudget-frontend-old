@@ -22,7 +22,7 @@ const columns: GridColDef[] = [
 ];
 
 export default function AccounTable() {
-  const { accounts, error, isLoading } = useAccounts();
+  const { accounts, error, isLoading, isValidating } = useAccounts();
 
   if (error) {
     alert("Error loading accounts");
@@ -33,7 +33,7 @@ export default function AccounTable() {
   return (
     <Box>
       <DataGrid
-        loading={isLoading}
+        loading={isLoading || isValidating}
         rows={rows}
         columns={columns}
         pageSize={10}

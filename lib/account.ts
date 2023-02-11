@@ -25,7 +25,7 @@ const fetcher = async (path: string) => {
 };
 
 export function useAccounts() {
-  const { data, error, isLoading } = useSWR(
+  const { data, error, isLoading, isValidating } = useSWR(
     `${API_BASE_URL}/${suffix}`,
     fetcher
   );
@@ -34,6 +34,7 @@ export function useAccounts() {
     accounts: data,
     error,
     isLoading,
+    isValidating,
   };
 }
 
