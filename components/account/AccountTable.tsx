@@ -1,6 +1,5 @@
-import DownloadAccountError from "@/components/account/DownloadAccountError";
 import { useAccounts } from "@/lib/account";
-import { renderCurrencyCell } from "@/lib/renderCell";
+import { renderCurrencyCell } from "@/lib/data-grid";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
@@ -26,20 +25,22 @@ export default function AccounTable() {
   const { accounts, error, isLoading } = useAccounts();
 
   if (error) {
-    return <DownloadAccountError />;
+    alert("Error loading accounts");
   }
 
-  const rows = isLoading ? [] : accounts;
+  const rows = error || isLoading ? [] : accounts;
 
   return (
     <Box>
       <DataGrid
+        loading={isLoading}
         rows={rows}
         columns={columns}
         pageSize={10}
+        rowsPerPageOptions={[10]}
         autoHeight
-        checkboxSelection
         disableSelectionOnClick
+        checkboxSelection
       />
     </Box>
   );
