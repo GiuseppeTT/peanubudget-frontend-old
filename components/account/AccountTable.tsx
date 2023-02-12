@@ -1,7 +1,7 @@
 import { useAccounts } from "@/lib/account";
 import { renderCurrencyCell } from "@/lib/data-grid";
 import Box from "@mui/material/Box";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRowId } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
   {
@@ -21,7 +21,15 @@ const columns: GridColDef[] = [
   },
 ];
 
-export default function AccounTable() {
+export interface AccountTableProps {
+  selectedRowIds: GridRowId[];
+  setSelectedRowIds: (newSelectedRowIds: GridRowId[]) => void;
+}
+
+export default function AccounTable({
+  selectedRowIds,
+  setSelectedRowIds,
+}: AccountTableProps) {
   const { accounts, error, isLoading, isValidating } = useAccounts();
 
   if (error) {
@@ -29,6 +37,10 @@ export default function AccounTable() {
   }
 
   const rows = error || isLoading ? [] : accounts;
+
+  const handleSelectedRowIdsChange = (newSelectedRowIds: GridRowId[]) => {
+    setSelectedRowIds(newSelectedRowIds);
+  };
 
   return (
     <Box>
@@ -41,6 +53,8 @@ export default function AccounTable() {
         autoHeight
         disableSelectionOnClick
         checkboxSelection
+        selectionModel={selectedRowIds}
+        onSelectionModelChange={handleSelectedRowIdsChange}
       />
     </Box>
   );

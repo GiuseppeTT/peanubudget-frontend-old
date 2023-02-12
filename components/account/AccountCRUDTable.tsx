@@ -4,8 +4,12 @@ import DeleteAccountButton from "@/components/account/DeleteAccountButton";
 import EditAccountButton from "@/components/account/EditAccountButton";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import { GridRowId } from "@mui/x-data-grid";
+import { useState } from "react";
 
 export default function AccountCRUDTable() {
+  const [selectedRowIds, setSelectedRowIds] = useState<GridRowId[]>([]);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -17,11 +21,14 @@ export default function AccountCRUDTable() {
             <EditAccountButton />
           </Grid>
           <Grid item xs="auto">
-            <DeleteAccountButton />
+            <DeleteAccountButton selectedRowIds={selectedRowIds} />
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <AccountTable />
+          <AccountTable
+            selectedRowIds={selectedRowIds}
+            setSelectedRowIds={setSelectedRowIds}
+          />
         </Grid>
       </Grid>
     </Box>
