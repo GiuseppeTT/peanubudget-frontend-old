@@ -73,7 +73,7 @@ export default function EditPayeeModal({
   return (
     <Dialog open={isShowing} onClose={onClose}>
       <EditPayeeModalHeader />
-      <EditPayeeModalBody name={name} handleNameChange={handleNameChange} />
+      <EditPayeeModalBody name={name} onNameChange={handleNameChange} />
       <EditPayeeModalFooter onClose={onClose} onEdit={handleEdit} />
     </Dialog>
   );

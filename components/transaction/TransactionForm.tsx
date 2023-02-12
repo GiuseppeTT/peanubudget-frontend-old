@@ -8,12 +8,12 @@ export interface TransactionFormProps {
   category: string;
   comment: string;
   value: number;
-  handleDateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleAccountChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handlePayeeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleCategoryChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleCommentChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onAccountChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onPayeeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onCategoryChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onCommentChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function TransactionForm({
@@ -23,12 +23,12 @@ export default function TransactionForm({
   category,
   comment,
   value,
-  handleDateChange,
-  handleAccountChange,
-  handlePayeeChange,
-  handleCategoryChange,
-  handleCommentChange,
-  handleValueChange,
+  onDateChange,
+  onAccountChange,
+  onPayeeChange,
+  onCategoryChange,
+  onCommentChange,
+  onValueChange,
 }: TransactionFormProps) {
   return (
     <Box component="form">
@@ -38,7 +38,7 @@ export default function TransactionForm({
         label="Date"
         type="string"
         value={date}
-        onChange={handleDateChange}
+        onChange={onDateChange}
         margin="dense"
         fullWidth
       />
@@ -48,7 +48,7 @@ export default function TransactionForm({
         label="Account"
         type="string"
         value={account}
-        onChange={handleAccountChange}
+        onChange={onAccountChange}
         margin="dense"
         fullWidth
       />
@@ -58,7 +58,7 @@ export default function TransactionForm({
         label="Payee"
         type="string"
         value={payee}
-        onChange={handlePayeeChange}
+        onChange={onPayeeChange}
         margin="dense"
         fullWidth
       />
@@ -68,7 +68,7 @@ export default function TransactionForm({
         label="Category"
         type="string"
         value={category}
-        onChange={handleCategoryChange}
+        onChange={onCategoryChange}
         margin="dense"
         fullWidth
       />
@@ -77,7 +77,7 @@ export default function TransactionForm({
         label="Comment"
         type="string"
         value={comment}
-        onChange={handleCommentChange}
+        onChange={onCommentChange}
         margin="dense"
         fullWidth
       />
@@ -87,7 +87,7 @@ export default function TransactionForm({
         label="Value"
         type="number"
         value={value}
-        onChange={handleValueChange}
+        onChange={onValueChange}
         margin="dense"
         fullWidth
       />

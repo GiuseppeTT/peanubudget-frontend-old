@@ -75,8 +75,8 @@ export default function CreateCategoryModal({
       <CreateCategoryModalBody
         name={name}
         budget={budget}
-        handleNameChange={handleNameChange}
-        handleBudgetChange={handleBudgetChange}
+        onNameChange={handleNameChange}
+        onBudgetChange={handleBudgetChange}
       />
       <CreateCategoryModalFooter onClose={onClose} onCreate={handleCreate} />
     </Dialog>

@@ -4,15 +4,15 @@ import TextField from "@mui/material/TextField";
 export interface CategoryFormProps {
   name: string;
   budget: number;
-  handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleBudgetChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBudgetChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function CategoryForm({
   name,
   budget,
-  handleNameChange,
-  handleBudgetChange,
+  onNameChange,
+  onBudgetChange,
 }: CategoryFormProps) {
   return (
     <Box component="form">
@@ -22,7 +22,7 @@ export default function CategoryForm({
         label="Name"
         type="string"
         value={name}
-        onChange={handleNameChange}
+        onChange={onNameChange}
         margin="dense"
         fullWidth
       />
@@ -32,7 +32,7 @@ export default function CategoryForm({
         label="Budget"
         type="number"
         value={budget}
-        onChange={handleBudgetChange}
+        onChange={onBudgetChange}
         margin="dense"
         fullWidth
       />

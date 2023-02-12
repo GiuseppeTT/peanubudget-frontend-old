@@ -62,7 +62,7 @@ export default function CreatePayeeModal({
   return (
     <Dialog open={isShowing} onClose={onClose}>
       <CreatePayeeModalHeader />
-      <CreatePayeeModalBody name={name} handleNameChange={handleNameChange} />
+      <CreatePayeeModalBody name={name} onNameChange={handleNameChange} />
       <CreatePayeeModalFooter onClose={onClose} onCreate={handleCreate} />
     </Dialog>
   );

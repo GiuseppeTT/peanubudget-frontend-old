@@ -86,8 +86,8 @@ export default function EditAccountModal({
       <EditAccountModalBody
         name={name}
         balance={balance}
-        handleNameChange={handleNameChange}
-        handleBalanceChange={handleBalanceChange}
+        onNameChange={handleNameChange}
+        onBalanceChange={handleBalanceChange}
       />
       <EditAccountModalFooter onClose={onClose} onEdit={handleEdit} />
     </Dialog>

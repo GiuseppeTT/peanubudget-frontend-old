@@ -103,12 +103,12 @@ export default function CreateTransactionModal({
         category={category}
         comment={comment}
         value={value}
-        handleDateChange={handleDateChange}
-        handleAccountChange={handleAccountChange}
-        handlePayeeChange={handlePayeeChange}
-        handleCategoryChange={handleCategoryChange}
-        handleCommentChange={handleCommentChange}
-        handleValueChange={handleValueChange}
+        onDateChange={handleDateChange}
+        onAccountChange={handleAccountChange}
+        onPayeeChange={handlePayeeChange}
+        onCategoryChange={handleCategoryChange}
+        onCommentChange={handleCommentChange}
+        onValueChange={handleValueChange}
       />
       <CreateTransactionModalFooter onClose={onClose} onCreate={handleCreate} />
     </Dialog>

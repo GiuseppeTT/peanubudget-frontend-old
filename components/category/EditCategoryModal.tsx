@@ -86,8 +86,8 @@ export default function EditCategoryModal({
       <EditCategoryModalBody
         name={name}
         budget={budget}
-        handleNameChange={handleNameChange}
-        handleBudgetChange={handleBudgetChange}
+        onNameChange={handleNameChange}
+        onBudgetChange={handleBudgetChange}
       />
       <EditCategoryModalFooter onClose={onClose} onEdit={handleEdit} />
     </Dialog>

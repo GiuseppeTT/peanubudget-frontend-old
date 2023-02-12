@@ -75,8 +75,8 @@ export default function CreateAccountModal({
       <CreateAccountModalBody
         name={name}
         balance={balance}
-        handleNameChange={handleNameChange}
-        handleBalanceChange={handleBalanceChange}
+        onNameChange={handleNameChange}
+        onBalanceChange={handleBalanceChange}
       />
       <CreateAccountModalFooter onClose={onClose} onCreate={handleCreate} />
     </Dialog>

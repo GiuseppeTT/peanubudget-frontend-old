@@ -3,10 +3,10 @@ import TextField from "@mui/material/TextField";
 
 export interface PayeeFormProps {
   name: string;
-  handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function PayeeForm({ name, handleNameChange }: PayeeFormProps) {
+export default function PayeeForm({ name, onNameChange }: PayeeFormProps) {
   return (
     <Box component="form">
       <TextField
@@ -15,7 +15,7 @@ export default function PayeeForm({ name, handleNameChange }: PayeeFormProps) {
         label="Name"
         type="string"
         value={name}
-        onChange={handleNameChange}
+        onChange={onNameChange}
         margin="dense"
         fullWidth
       />

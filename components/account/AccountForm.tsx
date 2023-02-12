@@ -4,15 +4,15 @@ import TextField from "@mui/material/TextField";
 export interface AccountFormProps {
   name: string;
   balance: number;
-  handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleBalanceChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBalanceChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function AccountForm({
   name,
   balance,
-  handleNameChange,
-  handleBalanceChange,
+  onNameChange,
+  onBalanceChange,
 }: AccountFormProps) {
   return (
     <Box component="form">
@@ -22,7 +22,7 @@ export default function AccountForm({
         label="Name"
         type="string"
         value={name}
-        onChange={handleNameChange}
+        onChange={onNameChange}
         margin="dense"
         fullWidth
       />
@@ -32,7 +32,7 @@ export default function AccountForm({
         label="Balance"
         type="number"
         value={balance}
-        onChange={handleBalanceChange}
+        onChange={onBalanceChange}
         margin="dense"
         fullWidth
       />
