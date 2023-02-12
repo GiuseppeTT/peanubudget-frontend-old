@@ -11,6 +11,10 @@ export default function DeleteccountButton({
   selectedRowIds,
 }: DeleteAccountButtonProps) {
   const handleDelete = async () => {
+    if (selectedRowIds.length === 0) {
+      return;
+    }
+
     const promises = selectedRowIds.map((id: GridRowId) => deleteAccount(id));
     await Promise.all(promises);
     revalidateAccounts();

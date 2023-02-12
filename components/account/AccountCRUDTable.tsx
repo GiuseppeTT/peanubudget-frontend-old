@@ -18,7 +18,7 @@ export default function AccountCRUDTable() {
             <CreateAccountButton />
           </Grid>
           <Grid item xs="auto">
-            <EditAccountButton />
+            <EditAccountButton selectedRowIds={selectedRowIds}/>
           </Grid>
           <Grid item xs="auto">
             <DeleteAccountButton selectedRowIds={selectedRowIds} />
