@@ -18,6 +18,17 @@ export interface AccountOutput {
   balance: number;
 }
 
+export const defaultAccountInput: AccountInput = {
+  name: "",
+  balance: 0,
+};
+
+export const defaultAccountOutput: AccountOutput = {
+  id: 0,
+  name: "",
+  balance: 0,
+};
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 const suffix = "account";
 const fetcher = async (path: string) => {
@@ -25,13 +36,15 @@ const fetcher = async (path: string) => {
 };
 
 export function useAccounts() {
-  const { data, error, isLoading, isValidating } = useSWR(
+  const { data, error, isLoading, isValidating } = useSWR<AccountOutput[]>(
     `${API_BASE_URL}/${suffix}`,
     fetcher
   );
 
+  const accounts = data ?? [];
+
   return {
-    accounts: data,
+    accounts,
     error,
     isLoading,
     isValidating,
@@ -43,7 +56,7 @@ export function revalidateAccounts() {
 }
 
 export async function getAccount(id: GridRowId) {
-  axios.get(`${API_BASE_URL}/${suffix}/${id}`).then((response) => {
+  return axios.get(`${API_BASE_URL}/${suffix}/${id}`).then((response) => {
     return response.data;
   });
 }

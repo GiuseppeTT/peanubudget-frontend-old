@@ -1,14 +1,17 @@
 import EditAccountModal from "@/components/account/EditAccountModal";
+import { AccountOutput, defaultAccountOutput } from "@/lib/account";
 import { useBinaryState } from "@/lib/utils";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 import { GridRowId } from "@mui/x-data-grid";
 
 export interface EditAccountButtonProps {
+  accounts: AccountOutput[];
   selectedRowIds: GridRowId[];
 }
 
 export default function EditAccountButton({
+  accounts,
   selectedRowIds,
 }: EditAccountButtonProps) {
   const [isShowing, setShow, setClose] = useBinaryState(false);
@@ -19,9 +22,13 @@ export default function EditAccountButton({
     } else if (selectedRowIds.length === 1) {
       setShow();
     } else {
-      alert("You can only edit one account at a time.")
+      alert("You can only edit one account at a time.");
     }
   };
+
+  const account =
+    accounts.find((account) => account.id === selectedRowIds[0]) ??
+    defaultAccountOutput;
 
   return (
     <>
@@ -33,7 +40,11 @@ export default function EditAccountButton({
       >
         Edit
       </Button>
-      <EditAccountModal isShowing={isShowing} onClose={setClose} />
+      <EditAccountModal
+        account={account}
+        isShowing={isShowing}
+        onClose={setClose}
+      />
     </>
   );
 }

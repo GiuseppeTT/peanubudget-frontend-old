@@ -1,5 +1,9 @@
 import AccountForm from "@/components/account/AccountForm";
-import { createAccount, revalidateAccounts } from "@/lib/account";
+import {
+  createAccount,
+  revalidateAccounts,
+  defaultAccountInput,
+} from "@/lib/account";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -45,8 +49,8 @@ export default function CreateAccountModal({
   isShowing,
   onClose,
 }: CreateAccountModalProps) {
-  const [name, setName] = useState("");
-  const [balance, setBalance] = useState(0);
+  const [name, setName] = useState(defaultAccountInput.name);
+  const [balance, setBalance] = useState(defaultAccountInput.balance);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -61,8 +65,8 @@ export default function CreateAccountModal({
     revalidateAccounts();
 
     onClose();
-    setName("");
-    setBalance(0);
+    setName(defaultAccountInput.name);
+    setBalance(defaultAccountInput.balance);
   };
 
   return (

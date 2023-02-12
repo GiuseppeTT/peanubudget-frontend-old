@@ -1,4 +1,4 @@
-import { useAccounts } from "@/lib/account";
+import { AccountOutput } from "@/lib/account";
 import { renderCurrencyCell } from "@/lib/data-grid";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridRowId } from "@mui/x-data-grid";
@@ -22,21 +22,25 @@ const columns: GridColDef[] = [
 ];
 
 export interface AccountTableProps {
+  accounts: AccountOutput[];
+  error: any;
+  isLoading: boolean;
+  isValidating: boolean;
   selectedRowIds: GridRowId[];
   setSelectedRowIds: (newSelectedRowIds: GridRowId[]) => void;
 }
 
 export default function AccounTable({
+  accounts,
+  error,
+  isLoading,
+  isValidating,
   selectedRowIds,
   setSelectedRowIds,
 }: AccountTableProps) {
-  const { accounts, error, isLoading, isValidating } = useAccounts();
-
   if (error) {
     alert("Error loading accounts");
   }
-
-  const rows = error || isLoading ? [] : accounts;
 
   const handleSelectedRowIdsChange = (newSelectedRowIds: GridRowId[]) => {
     setSelectedRowIds(newSelectedRowIds);
@@ -46,7 +50,7 @@ export default function AccounTable({
     <Box>
       <DataGrid
         loading={isLoading || isValidating}
-        rows={rows}
+        rows={accounts}
         columns={columns}
         pageSize={10}
         rowsPerPageOptions={[10]}

@@ -1,11 +1,16 @@
 import AccountForm from "@/components/account/AccountForm";
-import { editAccount, revalidateAccounts } from "@/lib/account";
+import {
+  AccountOutput,
+  editAccount,
+  revalidateAccounts,
+  defaultAccountOutput,
+} from "@/lib/account";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface EditAccountModalFooterProps {
   onClose: () => void;
@@ -37,16 +42,25 @@ function EditAccountModalHeader() {
 }
 
 export interface EditAccountModalProps {
+  account: AccountOutput;
   isShowing: boolean;
   onClose: () => void;
 }
 
 export default function EditAccountModal({
+  account,
   isShowing,
   onClose,
 }: EditAccountModalProps) {
-  const [name, setName] = useState("");
-  const [balance, setBalance] = useState(0);
+  const [id, setId] = useState(defaultAccountOutput.id);
+  const [name, setName] = useState(defaultAccountOutput.name);
+  const [balance, setBalance] = useState(defaultAccountOutput.balance);
+
+  useEffect(() => {
+    setId(account.id);
+    setName(account.name);
+    setBalance(account.balance);
+  }, [account]);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -57,12 +71,13 @@ export default function EditAccountModal({
   };
 
   const handleEdit = async () => {
-    await editAccount(1, { name, balance });
+    await editAccount(id, { name, balance });
     revalidateAccounts();
 
     onClose();
-    setName("");
-    setBalance(0);
+    setId(defaultAccountOutput.id);
+    setName(defaultAccountOutput.name);
+    setBalance(defaultAccountOutput.balance);
   };
 
   return (
