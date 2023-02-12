@@ -38,7 +38,7 @@ export function useAccounts() {
   };
 }
 
-export async function revalidateAccounts() {
+export function revalidateAccounts() {
   mutate(`${API_BASE_URL}/${suffix}`);
 }
 
