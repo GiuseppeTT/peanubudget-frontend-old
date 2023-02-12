@@ -18,7 +18,7 @@ export interface AccountOutput {
   balance: number;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 const suffix = "account";
 const fetcher = async (path: string) => {
   return axios.get(path).then((response) => response.data);
