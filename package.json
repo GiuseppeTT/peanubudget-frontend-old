@@ -6,8 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "export": "next export",
+    "static-start": "serve out",
+    "clean": "rm -rf .next out",
     "format": "npx prettier --write .",
+    "lint": "next lint",
     "fake-backend": "json-server --watch db.json --port 3004 --delay 1000"
   },
   "dependencies": {
