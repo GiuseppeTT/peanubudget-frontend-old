@@ -62,13 +62,13 @@ export async function getAccount(id: GridRowId) {
 }
 
 export async function createAccount(input: AccountInput) {
-  axios.post(`${API_BASE_URL}/${suffix}`, input);
+  return axios.post(`${API_BASE_URL}/${suffix}`, input);
 }
 
 export async function editAccount(id: GridRowId, update: AccountUpdate) {
-  axios.put(`${API_BASE_URL}/${suffix}/${id}`, update);
+  return axios.put(`${API_BASE_URL}/${suffix}/${id}`, update);
 }
 
 export async function deleteAccount(id: GridRowId) {
-  axios.delete(`${API_BASE_URL}/${suffix}/${id}`);
+  return axios.delete(`${API_BASE_URL}/${suffix}/${id}`);
 }
