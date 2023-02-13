@@ -1,5 +1,16 @@
 import Typography from "@mui/material/Typography";
 import { GridRenderCellParams } from "@mui/x-data-grid";
+import dayjs from "dayjs";
+
+export const minWidth = 200;
+
+export const pageSize = 10;
+
+export function renderDateCell({ value }: GridRenderCellParams) {
+  const text = dayjs(value).format("MM/DD/YYYY");
+
+  return <Typography variant="body2">{text}</Typography>;
+}
 
 export function renderCurrencyCell({ value }: GridRenderCellParams) {
   let color: string;

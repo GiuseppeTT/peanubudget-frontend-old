@@ -1,7 +1,8 @@
 import { CategoryOutput } from "@/lib/category";
-import { renderCurrencyCell } from "@/lib/data-grid";
+import { minWidth, pageSize, renderCurrencyCell } from "@/lib/data-grid";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridRowId } from "@mui/x-data-grid";
+import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
 
 const columns: GridColDef[] = [
   {
@@ -9,14 +10,14 @@ const columns: GridColDef[] = [
     headerName: "Name",
     type: "string",
     flex: 1,
-    minWidth: 200,
+    minWidth: minWidth,
   },
   {
     field: "budget",
     headerName: "Budget",
     type: "number",
     flex: 1,
-    minWidth: 200,
+    minWidth: minWidth,
     renderCell: renderCurrencyCell,
   },
   {
@@ -24,7 +25,7 @@ const columns: GridColDef[] = [
     headerName: "Expenditure",
     type: "number",
     flex: 1,
-    minWidth: 200,
+    minWidth: minWidth,
     renderCell: renderCurrencyCell,
   },
   {
@@ -32,10 +33,16 @@ const columns: GridColDef[] = [
     headerName: "Available",
     type: "number",
     flex: 1,
-    minWidth: 200,
+    minWidth: minWidth,
     renderCell: renderCurrencyCell,
   },
 ];
+
+const initialState: GridInitialStateCommunity = {
+  sorting: {
+    sortModel: [{ field: "name", sort: "asc" }],
+  },
+};
 
 export interface CategoryTableProps {
   categories: CategoryOutput[];
@@ -68,8 +75,9 @@ export default function AccounTable({
         loading={isLoading || isValidating}
         rows={categories}
         columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={pageSize}
+        rowsPerPageOptions={[pageSize]}
+        initialState={initialState}
         autoHeight
         disableSelectionOnClick
         checkboxSelection
