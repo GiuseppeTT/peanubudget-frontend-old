@@ -1,0 +1,88 @@
+{
+  "account": [
+    {
+      "id": 1,
+      "name": "Savings",
+      "balance": 10000
+    },
+    {
+      "id": 2,
+      "name": "Checking",
+      "balance": 2000
+    },
+    {
+      "id": 3,
+      "name": "Credit card",
+      "balance": -1000
+    }
+  ],
+  "payee": [
+    {
+      "id": 1,
+      "name": "Employer",
+      "expenditure": 10000
+    },
+    {
+      "id": 2,
+      "name": "Landlord",
+      "expenditure": -1000
+    },
+    {
+      "id": 3,
+      "name": "Market",
+      "expenditure": -500
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Emergency fund",
+      "budget": 5000,
+      "expenditure": 5000,
+      "available": 10000
+    },
+    {
+      "id": 2,
+      "name": "Rent",
+      "budget": 1000,
+      "expenditure": -1000,
+      "available": 0
+    },
+    {
+      "id": 3,
+      "name": "Groceries",
+      "budget": 1000,
+      "expenditure": -200,
+      "available": 800
+    }
+  ],
+  "transaction": [
+    {
+      "id": 1,
+      "date": "2023-01-15T08:00:00.000Z",
+      "account": "Savings",
+      "payee": "Employer",
+      "category": "Emergency fund",
+      "comment": null,
+      "value": 10000
+    },
+    {
+      "id": 2,
+      "date": "2023-01-20T08:00:00.000Z",
+      "account": "Credit card",
+      "payee": "Market",
+      "category": "Groceries",
+      "comment": "Some fresh salmon",
+      "value": -50
+    },
+    {
+      "id": 3,
+      "date": "2023-01-28T08:00:00.000Z",
+      "account": "Checking",
+      "payee": "Landlord",
+      "category": "Rent",
+      "comment": null,
+      "value": -2000
+    }
+  ]
+}
