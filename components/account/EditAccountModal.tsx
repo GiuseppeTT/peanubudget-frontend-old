@@ -3,7 +3,7 @@ import {
   AccountOutput,
   editAccount,
   revalidateAccounts,
-  defaultAccountOutput,
+  defaultAccountInput,
 } from "@/lib/account";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -52,9 +52,9 @@ export default function EditAccountModal({
   isShowing,
   onClose,
 }: EditAccountModalProps) {
-  const [id, setId] = useState(defaultAccountOutput.id);
-  const [name, setName] = useState(defaultAccountOutput.name);
-  const [balance, setBalance] = useState(defaultAccountOutput.balance);
+  const [id, setId] = useState(0);
+  const [name, setName] = useState(defaultAccountInput.name);
+  const [balance, setBalance] = useState(defaultAccountInput.balance);
 
   useEffect(() => {
     setId(account.id);
@@ -75,9 +75,9 @@ export default function EditAccountModal({
     revalidateAccounts();
 
     onClose();
-    setId(defaultAccountOutput.id);
-    setName(defaultAccountOutput.name);
-    setBalance(defaultAccountOutput.balance);
+    setId(0);
+    setName(defaultAccountInput.name);
+    setBalance(defaultAccountInput.balance);
   };
 
   return (

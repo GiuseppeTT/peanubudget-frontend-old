@@ -3,13 +3,14 @@ import {
   TransactionOutput,
   editTransaction,
   revalidateTransactions,
-  defaultTransactionOutput,
+  defaultTransactionInput,
 } from "@/lib/transaction";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import dayjs, { Dayjs } from "dayjs";
 import { useEffect, useState } from "react";
 
 interface EditTransactionModalFooterProps {
@@ -52,17 +53,17 @@ export default function EditTransactionModal({
   isShowing,
   onClose,
 }: EditTransactionModalProps) {
-  const [id, setId] = useState(defaultTransactionOutput.id);
-  const [date, setDate] = useState(defaultTransactionOutput.date);
-  const [account, setAccount] = useState(defaultTransactionOutput.account);
-  const [payee, setPayee] = useState(defaultTransactionOutput.payee);
-  const [category, setCategory] = useState(defaultTransactionOutput.category);
-  const [comment, setComment] = useState(defaultTransactionOutput.comment);
-  const [value, setValue] = useState(defaultTransactionOutput.value);
+  const [id, setId] = useState(0);
+  const [date, setDate] = useState(defaultTransactionInput.date);
+  const [account, setAccount] = useState(defaultTransactionInput.account);
+  const [payee, setPayee] = useState(defaultTransactionInput.payee);
+  const [category, setCategory] = useState(defaultTransactionInput.category);
+  const [comment, setComment] = useState(defaultTransactionInput.comment);
+  const [value, setValue] = useState(defaultTransactionInput.value);
 
   useEffect(() => {
     setId(transaction.id);
-    setDate(transaction.date);
+    setDate(dayjs(transaction.date));
     setAccount(transaction.account);
     setPayee(transaction.payee);
     setCategory(transaction.category);
@@ -70,8 +71,8 @@ export default function EditTransactionModal({
     setValue(transaction.value);
   }, [transaction]);
 
-  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDate(event.target.value);
+  const handleDateChange = (newDate: Dayjs) => {
+    setDate(newDate);
   };
 
   const handleAccountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,13 +107,13 @@ export default function EditTransactionModal({
     revalidateTransactions();
 
     onClose();
-    setId(defaultTransactionOutput.id);
-    setDate(defaultTransactionOutput.date);
-    setAccount(defaultTransactionOutput.account);
-    setPayee(defaultTransactionOutput.payee);
-    setCategory(defaultTransactionOutput.category);
-    setComment(defaultTransactionOutput.comment);
-    setValue(defaultTransactionOutput.value);
+    setId(0);
+    setDate(defaultTransactionInput.date);
+    setAccount(defaultTransactionInput.account);
+    setPayee(defaultTransactionInput.payee);
+    setCategory(defaultTransactionInput.category);
+    setComment(defaultTransactionInput.comment);
+    setValue(defaultTransactionInput.value);
   };
 
   return (

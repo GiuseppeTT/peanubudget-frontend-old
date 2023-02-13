@@ -1,5 +1,9 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { Dayjs } from "dayjs";
 
 export interface TransactionFormProps {
   date: string;
@@ -8,7 +12,7 @@ export interface TransactionFormProps {
   category: string;
   comment: string;
   value: number;
-  onDateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDateChange: (newDate: Dayjs | null) => void;
   onAccountChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onPayeeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onCategoryChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -32,16 +36,23 @@ export default function TransactionForm({
 }: TransactionFormProps) {
   return (
     <Box component="form">
-      <TextField
-        required
-        id="date"
-        label="Date"
-        type="string"
-        value={date}
-        onChange={onDateChange}
-        margin="dense"
-        fullWidth
-      />
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DesktopDatePicker
+          label="Date"
+          inputFormat="MM/DD/YYYY"
+          value={date}
+          onChange={onDateChange}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              required
+              id="date"
+              margin="dense"
+              fullWidth
+            />
+          )}
+        />
+      </LocalizationProvider>
       <TextField
         required
         id="account"

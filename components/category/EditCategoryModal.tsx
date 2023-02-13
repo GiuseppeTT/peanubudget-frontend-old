@@ -3,7 +3,7 @@ import {
   CategoryOutput,
   editCategory,
   revalidateCategories,
-  defaultCategoryOutput,
+  defaultCategoryInput,
 } from "@/lib/category";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -52,9 +52,9 @@ export default function EditCategoryModal({
   isShowing,
   onClose,
 }: EditCategoryModalProps) {
-  const [id, setId] = useState(defaultCategoryOutput.id);
-  const [name, setName] = useState(defaultCategoryOutput.name);
-  const [budget, setBudget] = useState(defaultCategoryOutput.budget);
+  const [id, setId] = useState(0);
+  const [name, setName] = useState(defaultCategoryInput.name);
+  const [budget, setBudget] = useState(defaultCategoryInput.budget);
 
   useEffect(() => {
     setId(category.id);
@@ -75,9 +75,9 @@ export default function EditCategoryModal({
     revalidateCategories();
 
     onClose();
-    setId(defaultCategoryOutput.id);
-    setName(defaultCategoryOutput.name);
-    setBudget(defaultCategoryOutput.budget);
+    setId(0);
+    setName(defaultCategoryInput.name);
+    setBudget(defaultCategoryInput.budget);
   };
 
   return (

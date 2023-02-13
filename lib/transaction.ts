@@ -1,9 +1,10 @@
 import { GridRowId } from "@mui/x-data-grid";
 import axios from "axios";
+import dayjs, { Dayjs } from "dayjs";
 import useSWR, { mutate } from "swr";
 
 export interface TransactionInput {
-  date: string;
+  date: Dayjs;
   account: string;
   payee: string;
   category: string;
@@ -12,7 +13,7 @@ export interface TransactionInput {
 }
 
 export interface TransactionUpdate {
-  date?: string;
+  date?: Dayjs;
   account?: string;
   payee?: string;
   category?: string;
@@ -31,7 +32,7 @@ export interface TransactionOutput {
 }
 
 export const defaultTransactionInput: TransactionInput = {
-  date: "",
+  date: dayjs(),
   account: "",
   payee: "",
   category: "",

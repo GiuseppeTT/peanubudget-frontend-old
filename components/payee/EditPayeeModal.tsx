@@ -3,7 +3,7 @@ import {
   PayeeOutput,
   editPayee,
   revalidatePayees,
-  defaultPayeeOutput,
+  defaultPayeeInput,
 } from "@/lib/payee";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -49,8 +49,8 @@ export default function EditPayeeModal({
   isShowing,
   onClose,
 }: EditPayeeModalProps) {
-  const [id, setId] = useState(defaultPayeeOutput.id);
-  const [name, setName] = useState(defaultPayeeOutput.name);
+  const [id, setId] = useState(0);
+  const [name, setName] = useState(defaultPayeeInput.name);
 
   useEffect(() => {
     setId(payee.id);
@@ -66,8 +66,8 @@ export default function EditPayeeModal({
     revalidatePayees();
 
     onClose();
-    setId(defaultPayeeOutput.id);
-    setName(defaultPayeeOutput.name);
+    setId(0);
+    setName(defaultPayeeInput.name);
   };
 
   return (

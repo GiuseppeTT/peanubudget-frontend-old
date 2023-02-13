@@ -9,6 +9,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { Dayjs } from "dayjs";
 import { useState } from "react";
 
 interface CreateTransactionModalFooterProps {
@@ -56,8 +57,8 @@ export default function CreateTransactionModal({
   const [comment, setComment] = useState(defaultTransactionInput.comment);
   const [value, setValue] = useState(defaultTransactionInput.value);
 
-  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDate(event.target.value);
+  const handleDateChange = (newDate: Dayjs) => {
+    setDate(newDate);
   };
 
   const handleAccountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
