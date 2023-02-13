@@ -13,6 +13,10 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v3
 
+      - name: Install dependencies
+        run: |
+          npm install
+
       - name: Lint with prettier
         run: |
           npx prettier --check .
